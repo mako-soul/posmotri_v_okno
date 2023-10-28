@@ -44,12 +44,15 @@ fieldset {
   align-items: center;
 }
 
+/*В первой попытке сдачи работы было замечание про несоответствие ширины блока .content ширине на макете.
+Несоответсвие происходит из-за появления скролла в блоке .content__list, но на макете скролла нет
+Если скролл скрыть - ширина блока соответствует ширине блока на макете*/
+
 .content {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 30px;
-  min-height: 535px;
+  gap: 28px;
 }
 
 .result {
@@ -102,7 +105,7 @@ fieldset {
   outline: 1px solid #FFF;
 }
 
-.search-form__label:has(.search-form__checkbox):hover {
+.search-form__label:hover .search-form__label-text {
   text-decoration: underline;
 }
 
@@ -150,7 +153,8 @@ fieldset {
   border: 1px solid #FFF;
 }
 
-.search-form__checkbox:checked +.search-form__pseudo-checkbox::after {
+.search-form__checkbox:checked +.search-form__pseudo-checkbox::after,
+.search-form__checkbox:active +.search-form__pseudo-checkbox::after {
   content: "";
   display: block;
   margin: 1px;
@@ -160,6 +164,7 @@ fieldset {
 }
 
 .button {
+  font-family: inherit;
   cursor: pointer;
   min-height: 34px;
   background-color: transparent;
@@ -175,7 +180,8 @@ fieldset {
 }
 
 .button:active {
-  background: #545050;
+  text-decoration: none;
+  background-color: #545050;
 }
 
 .button:focus {
@@ -194,15 +200,17 @@ fieldset {
 }
 
 .more-button {
-  min-width: 399px;
+  margin: 2px;
+  inline-size: calc(100% - 4px);
 }
 
 .content__details {
   box-sizing: content-box;
-  min-width: 400px;
+  min-width: 399px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 20px;
+  padding: 2px;
 }
 
 .title {
@@ -218,6 +226,10 @@ fieldset {
   color: #545050;
 }
 
+/*В первой попытке сдачи работы было замечание про несоответствие ширины блока .content ширине на макете.
+Несоответсвие происходит из-за появления скролла в блоке .content__list, но на макете скролла нет
+Если скролл скрыть - ширина блока соответствует ширине блока на макете*/
+
 .content__list {
   position: relative;
   display: flex;
@@ -227,7 +239,7 @@ fieldset {
 }
 
 .content__list-item:not(:last-child) {
-  margin-bottom: 30px;
+  margin-bottom: 27px;
 }
 
 .content__card-link {
@@ -247,23 +259,27 @@ fieldset {
   outline: 1px solid #FFF;
 }
 
-.content__card-link_current {
-  background-color: #545050;;
-}
-
-.content__card-link:has(:hover) {
+.content__card-link:hover {
   text-decoration-line: underline;
   text-underline-position: under;
 }
 
+.content__card-link:active {
+  background-color: #545050;
+  text-decoration: none;
+}
+
+.content__card-link_current {
+  background-color: #545050;
+}
+
 .content__video-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr;
   align-items: flex-start;
-  justify-content: space-between;
 }
 
 .content__video-card-description-container {
-  width: 200px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -274,6 +290,7 @@ fieldset {
   font-family: Oswald, sans-serif;
   font-size: 30px;
   font-weight: 700;
+  line-height: 100%;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
@@ -285,6 +302,29 @@ fieldset {
 }
 
 .content__video-card-thumbnail {
-  width: 194px;
-  height: 103px;
+  display: block;
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
 }
+
+/*У меня мак, поэтому скролл имеет нестандартные размеры.
+Чтобы проверить, скролл ли влияет на изменение ширины блока .content,
+добавляла его вручную, задавая стили
+Выяснилось, что именно отображение скролла влияет на увеличение ширины блока .content
+Если его скрыть, ширина соответсвутет ширине блока на макете
+*/
+
+/*::-webkit-scrollbar {*/
+/*  display: none;*/
+/*}*/
+
+/*::-webkit-scrollbar {*/
+/*  background-color: aqua;*/
+/*}*/
+
+
+/*::-webkit-scrollbar-thumb {*/
+/*  background-color: blue;*/
+/*}*/
+
