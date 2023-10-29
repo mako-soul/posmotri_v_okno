@@ -44,11 +44,8 @@ fieldset {
   align-items: center;
 }
 
-/*В первой попытке сдачи работы было замечание про несоответствие ширины блока .content ширине на макете.
-Несоответсвие происходит из-за появления скролла в блоке .content__list, но на макете скролла нет
-Если скролл скрыть - ширина блока соответствует ширине блока на макете*/
-
 .content {
+  width: 1140px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -226,10 +223,6 @@ fieldset {
   color: #545050;
 }
 
-/*В первой попытке сдачи работы было замечание про несоответствие ширины блока .content ширине на макете.
-Несоответсвие происходит из-за появления скролла в блоке .content__list, но на макете скролла нет
-Если скролл скрыть - ширина блока соответствует ширине блока на макете*/
-
 .content__list {
   position: relative;
   display: flex;
@@ -243,7 +236,6 @@ fieldset {
 }
 
 .content__card-link {
-  width: 394px;
   display: block;
   text-decoration: none;
   color: #FFF;
@@ -275,7 +267,7 @@ fieldset {
 
 .content__video-card {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: flex-start;
 }
 
@@ -307,13 +299,6 @@ fieldset {
   object-fit: cover;
   object-position: center;
 }
-
-/*У меня мак, поэтому скролл имеет нестандартные размеры.
-Чтобы проверить, скролл ли влияет на изменение ширины блока .content,
-добавляла его вручную, задавая стили
-Выяснилось, что именно отображение скролла влияет на увеличение ширины блока .content
-Если его скрыть, ширина соответсвутет ширине блока на макете
-*/
 
 /*::-webkit-scrollbar {*/
 /*  display: none;*/
